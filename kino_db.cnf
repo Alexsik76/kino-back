@@ -1,0 +1,7 @@
+[client]
+host=localhost
+port=3306
+database = kino_db
+user = kino_db_usr
+password = 4ZXKY6sDJNKKQ2jB
+default-character-set = utf8
