@@ -13,6 +13,23 @@ class Viewer(models.Model):
     def __str__(self):
         return self.full_name
 
+class Actor(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+
+    @property
+    def full_name(self):
+        return f"{self.last_name} {self.first_name}"
+
+    def __str__(self):
+        return self.full_name
+
+class Country(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
 class Hall(models.Model):
     name = models.CharField(max_length=100)
     rows = models.PositiveIntegerField()
@@ -24,6 +41,8 @@ class Hall(models.Model):
 class Movie(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
+    contrives = models.ManyToManyField(Country)
+    actors = models.ManyToManyField(Actor)
     genre = models.CharField(max_length=100)
     duration = models.PositiveIntegerField()  # in minutes
     poster = models.ImageField(upload_to='posters/', blank=True, null=True)

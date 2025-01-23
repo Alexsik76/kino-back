@@ -1,5 +1,10 @@
 from django.contrib import admin
-from cinema.models import Viewer, Hall, Movie, Session, Seat, Booking
 
+from cinema.forms import MovieForm
+from cinema.models import Viewer, Hall, Movie, Session, Seat, Booking, Country, Actor
 
-admin.site.register([Viewer, Hall, Movie, Session, Seat, Booking])
+class MovieAdmin(admin.ModelAdmin):
+    form = MovieForm
+
+admin.site.register(Movie, MovieAdmin)
+admin.site.register([Viewer, Hall, Session, Seat, Booking, Country, Actor ])
